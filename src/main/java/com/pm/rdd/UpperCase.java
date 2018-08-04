@@ -11,9 +11,9 @@ public class UpperCase {
         SparkConf sparkConf = new SparkConf().setAppName("UpperCase").setMaster("local");
         JavaSparkContext javaSparkContext = new JavaSparkContext(sparkConf);
 
-        JavaRDD<String> lines = javaSparkContext.textFile("in/uppercase.text");
-        JavaRDD<String> lowerCaseLines = lines.map(String::toUpperCase);
-        lowerCaseLines.saveAsTextFile("result/uppercase_capital.text");
+        JavaRDD<String> lowerCaseLines = javaSparkContext.textFile("in/uppercase.text");
+        JavaRDD<String> upperCaseLines = lowerCaseLines.map(String::toUpperCase);
+        upperCaseLines.saveAsTextFile("out/uppercase_capital");
 
     }
 
